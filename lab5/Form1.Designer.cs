@@ -35,9 +35,9 @@ namespace lab5
             // 
             // pbMain
             // 
-            this.pbMain.Location = new System.Drawing.Point(-2, -1);
+            this.pbMain.Location = new System.Drawing.Point(0, 0);
             this.pbMain.Name = "pbMain";
-            this.pbMain.Size = new System.Drawing.Size(806, 453);
+            this.pbMain.Size = new System.Drawing.Size(801, 452);
             this.pbMain.TabIndex = 0;
             this.pbMain.TabStop = false;
             this.pbMain.Click += new System.EventHandler(this.pbMain_Click);

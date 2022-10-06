@@ -25,6 +25,7 @@ namespace lab5
         private void pbMain_Paint(object sender, PaintEventArgs e)
         {
             var graphics = e.Graphics;
+            graphics.Clear(Color.White);
             graphics.FillRectangle(new SolidBrush(Color.Yellow), 200, 100, 50, 30);
             graphics.DrawRectangle(new Pen(Color.Red), 200, 100, 50, 30);
         }
