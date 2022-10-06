@@ -14,10 +14,15 @@ namespace lab5
     public partial class Form1 : Form
     {
         MyRectangle myRect;
+        List<BaseObject> objects = new List<BaseObject>();
+        Player player;
         public Form1()
         {
             InitializeComponent();
-            myRect = new MyRectangle(100, 100, 0);
+            player = new Player(pbMain.Width / 2, pbMain.Height / 2, 0);
+            objects.Add(player);
+            objects.Add(new MyRectangle(50, 50, 0));
+            objects.Add(new MyRectangle(100, 100, 45));
         }
 
         private void pbMain_Click(object sender, EventArgs e)
@@ -29,10 +34,12 @@ namespace lab5
         {
             var graphics = e.Graphics;
             graphics.Clear(Color.White);
-            var matrix = graphics.Transform;
-            matrix.Translate(myRect.X, myRect.Y); 
-            graphics.Transform = matrix;
-            myRect.Render(graphics);
+            foreach (var obj in objects)
+            {
+                graphics.Transform = myRect.GetTransform();
+                obj.Render(graphics);
+            }
+            //myRect.Render(graphics);
         }
     }
 }

@@ -15,8 +15,8 @@ namespace lab5.Objects
         }
         public override void Render(Graphics graphics)
         {
-            graphics.FillRectangle(new SolidBrush(Color.Yellow), 0, 0, 50, 30);
-            graphics.DrawRectangle(new Pen(Color.Red, 2), 0, 0, 50, 30);
+            graphics.FillRectangle(new SolidBrush(Color.Yellow), -25, -15, 50, 30);
+            graphics.DrawRectangle(new Pen(Color.Red, 2), -25, -15, 50, 30);
         }
     }
 }
