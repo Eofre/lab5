@@ -11,6 +11,7 @@ namespace lab5.Objects
     class Player : BaseObject
     {
         public Action<Marker> OnMarkerOverlap;
+        public Action<MyRectangle> OnMyRectangleOverlap;
         public float vX, vY;
         public Player(float x, float y, float angle) : base(x, y, angle)
         {
@@ -29,13 +30,17 @@ namespace lab5.Objects
             {
                 OnMarkerOverlap(obj as Marker);
             }
-            
+            else if (obj is MyRectangle)
+            {
+                OnMyRectangleOverlap(obj as MyRectangle);
+            }
+
         }
         public override void Render(Graphics graphics)
         {
-            graphics.FillRectangle(new SolidBrush(Color.DarkOliveGreen), -30, -20, 60, 40);
-            graphics.DrawEllipse(new Pen(Color.Black, 2), -15, -15, 30, 30);
-            graphics.DrawEllipse(new Pen(Color.Black, 4), 0, 0, 40, 0);
+            
+            graphics.DrawEllipse(new Pen(Color.Blue, 2), -15, -15, 30, 30);
+            graphics.DrawEllipse(new Pen(Color.Black, 3), 0, 0, 30, 0);
 
         }
 

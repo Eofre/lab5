@@ -13,30 +13,55 @@ namespace lab5
 {
     public partial class Form1 : Form
     {
-        MyRectangle myRect;
         List<BaseObject> objects = new List<BaseObject>();
         Player player;
         Marker marker;
+        MyRectangle myRectangle;
         public Form1()
         {
             InitializeComponent();
+            Random randX = new Random();
+            Random randY = new Random();
             player = new Player(pbMain.Width / 2, pbMain.Height / 2, 0);
             player.OnOverlap += (p, obj) =>
             {
                 txtLog.Text = $"[{DateTime.Now:HH:mm:ss:ff}] Игрок пересекся с {obj}\n" + txtLog.Text;
             };
+            var numb = 0;
+
             player.OnMarkerOverlap += (m) =>
             {
                 objects.Remove(m);
                 marker = null;
             };
+
             marker = new Marker(pbMain.Width / 2 + 50, pbMain.Height / 2 + 50, 0);
-            objects.Add(marker);
+
+
+            player.OnMyRectangleOverlap += (n) =>
+            {
+                myRectangle = null;
+                objects.Remove(n);
+
+                numb++;
+                textBox1.Text = numb.ToString();
+                myRectangle = new MyRectangle(pbMain.Width / 2 + randX.Next(-400, 400), pbMain.Height / 2 + randY.Next(-300, 300), 0);
+                objects.Add(myRectangle);
+            };
+
+            if (myRectangle == null)
+            {
+                myRectangle = new MyRectangle(pbMain.Width / 2 + randX.Next(-400, 400), pbMain.Height / 2 + randY.Next(-300, 300), 0);
+                myRectangle.WantsRemove += (p) =>
+                {
+                    p.X = pbMain.Width / 2 + randX.Next(-150, 550);
+                    p.Y = pbMain.Height / 2 + randY.Next(-20, 375);
+                    p.count = 100;
+                };
+            }
+            objects.Add(myRectangle);
             objects.Add(player);
-
-
-            objects.Add(new MyRectangle(50, 50, 0));
-            objects.Add(new MyRectangle(100, 100, 45));
+            objects.Add(marker);
         }
 
         private void pbMain_Click(object sender, EventArgs e)
@@ -102,11 +127,21 @@ namespace lab5
             if (marker == null)
             {
                 marker = new Marker(0, 0, 0);
-                objects.Add(marker); 
+                objects.Add(marker);
             }
 
             marker.X = e.X;
             marker.Y = e.Y;
+        }
+
+        private void pbMain_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
