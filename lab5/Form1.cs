@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using lab5.Objects;
 
 namespace lab5
 {
     public partial class Form1 : Form
     {
+        MyRectangle myRect;
         public Form1()
         {
             InitializeComponent();
+            myRect = new MyRectangle(0, 0, 0);
         }
 
         private void pbMain_Click(object sender, EventArgs e)
@@ -26,8 +29,7 @@ namespace lab5
         {
             var graphics = e.Graphics;
             graphics.Clear(Color.White);
-            graphics.FillRectangle(new SolidBrush(Color.Yellow), 200, 100, 50, 30);
-            graphics.DrawRectangle(new Pen(Color.Red), 200, 100, 50, 30);
+            myRect.Render(graphics);
         }
     }
 }

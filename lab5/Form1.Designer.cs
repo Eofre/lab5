@@ -40,7 +40,6 @@ namespace lab5
             this.pbMain.Size = new System.Drawing.Size(801, 452);
             this.pbMain.TabIndex = 0;
             this.pbMain.TabStop = false;
-            this.pbMain.Click += new System.EventHandler(this.pbMain_Click);
             this.pbMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pbMain_Paint);
             // 
             // Form1

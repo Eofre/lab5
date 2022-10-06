@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace lab5.Objects
 {
@@ -17,6 +18,10 @@ namespace lab5.Objects
             X = x;
             Y = y;
             Angle = angle;
+        }
+        public virtual void Render(Graphics graphics)
+        {
+            
         }
     }
 }
