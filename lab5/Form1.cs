@@ -44,7 +44,7 @@ namespace lab5
                 objects.Remove(n);
 
                 numb++;
-                textBox1.Text = numb.ToString();
+                richTextBox1.Text = "очки:" + numb.ToString();
                 myRectangle = new MyRectangle(pbMain.Width / 2 + randX.Next(-400, 400), pbMain.Height / 2 + randY.Next(-300, 300), 0);
                 objects.Add(myRectangle);
             };
@@ -139,7 +139,8 @@ namespace lab5
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+       
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
