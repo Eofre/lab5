@@ -20,6 +20,12 @@ namespace lab5.Objects
             graphics.DrawLine(new Pen(Color.Red, 2), -15, 0, 15, 0);
             graphics.DrawEllipse(new Pen(Color.Red, 2), -10, -10, 20, 20);
         }
+        public override GraphicsPath GetGraphicsPath()
+        {
+            var path = base.GetGraphicsPath();
+            path.AddEllipse(-3, -3, 6, 6);
+            return path;
+        }
 
     }
 }
