@@ -17,7 +17,7 @@ namespace lab5
         public Form1()
         {
             InitializeComponent();
-            myRect = new MyRectangle(0, 0, 0);
+            myRect = new MyRectangle(100, 100, 0);
         }
 
         private void pbMain_Click(object sender, EventArgs e)
@@ -29,6 +29,9 @@ namespace lab5
         {
             var graphics = e.Graphics;
             graphics.Clear(Color.White);
+            var matrix = graphics.Transform;
+            matrix.Translate(myRect.X, myRect.Y); 
+            graphics.Transform = matrix;
             myRect.Render(graphics);
         }
     }
